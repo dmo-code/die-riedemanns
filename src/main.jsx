@@ -1,6 +1,8 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import heroPasture from '../assets/charolais-gruenland-hero.png';
+import chickenEggs from '../assets/charolais-hero.png';
+import heroPasture from '../assets/freilandhuehner-eier.png';
+import farmLandscape from '../assets/hoflandschaft.png';
 import './styles.css';
 
 const offerings = [
@@ -15,6 +17,27 @@ const offerings = [
   {
     title: 'Grünlandhaltung',
     text: 'Im Sommer leben die Tiere auf Grünlandflächen am Rand eines Naturschutzgebietes.',
+  },
+];
+
+const impressions = [
+  {
+    image: chickenEggs,
+    title: 'Freilandhaltung',
+    text: 'Hühner im Grünen und Eier direkt vom Hof.',
+    alt: 'Freilandhühner mit einem Korb Eier auf der Wiese',
+  },
+  {
+    image: heroPasture,
+    title: 'Mutterkuhherde',
+    text: 'Charolais-Rinder mit Kälbern auf weitläufigem Grünland.',
+    alt: 'Charolais-Rinder mit Kälbern auf einer Wiese bei Sonnenaufgang',
+  },
+  {
+    image: farmLandscape,
+    title: 'Landschaft',
+    text: 'Grünland, Hecken und stille Wege prägen den Hof.',
+    alt: 'Ländlicher Weg mit Blick über Grünlandflächen',
   },
 ];
 
@@ -39,7 +62,7 @@ function App() {
         <img
           className="hero-image"
           src={heroPasture}
-          alt="Charolais-Rinder mit Kälbern auf einer grünen Weide"
+          alt="Charolais-Rinder mit Kälbern auf einer grünen Weide bei Sonnenaufgang"
         />
         <div className="hero-shade" />
         <div className="hero-content">
@@ -72,6 +95,18 @@ function App() {
           <article className="feature" key={item.title}>
             <h3>{item.title}</h3>
             <p>{item.text}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="section impressions" aria-label="Impressionen vom Hof">
+        {impressions.map((item) => (
+          <article className="impression" key={item.title}>
+            <img src={item.image} alt={item.alt} />
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
           </article>
         ))}
       </section>
