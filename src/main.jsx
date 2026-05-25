@@ -8,15 +8,15 @@ import './styles.css';
 const offerings = [
   {
     title: 'Freilandeier',
-    text: 'Eier aus Freilandhaltung, direkt vom Hof und mit kurzen Wegen.',
+    text: 'Unsere Eier stammen von eigenen Hühnern in Freilandhaltung. Sie sind regelmäßig direkt am Hof erhältlich, mit kurzen Wegen und klarer Herkunft.',
   },
   {
     title: 'Charolais-Rindfleisch',
-    text: 'Fleisch von eigenen Charolais-Rindern, auf Anfrage und nach Verfügbarkeit.',
+    text: 'Fleisch von unseren eigenen Charolais-Rindern geben wir auf Anfrage und nach Verfügbarkeit ab. Die Termine richten sich nach der Haltung.',
   },
   {
     title: 'Grünlandhaltung',
-    text: 'Im Sommer leben die Tiere auf Grünlandflächen am Rand eines Naturschutzgebietes.',
+    text: 'Im Sommer stehen unsere Rinder auf Grünlandflächen am Rand eines Naturschutzgebietes. Die Kälber bleiben bei den Mutterkühen.',
   },
 ];
 
@@ -24,19 +24,19 @@ const impressions = [
   {
     image: chickenEggs,
     title: 'Freilandhaltung',
-    text: 'Hühner im Grünen und Eier direkt vom Hof.',
+    text: 'Hühner im Freiland und Eier direkt vom Hof.',
     alt: 'Freilandhühner mit einem Korb Eier auf der Wiese',
   },
   {
     image: heroPasture,
     title: 'Mutterkuhherde',
-    text: 'Charolais-Rinder mit Kälbern auf weitläufigem Grünland.',
+    text: 'Charolais-Rinder mit Kälbern, die bei ihren Mutterkühen bleiben.',
     alt: 'Charolais-Rinder mit Kälbern auf einer Wiese bei Sonnenaufgang',
   },
   {
     image: farmLandscape,
     title: 'Landschaft',
-    text: 'Grünland, Hecken und stille Wege prägen den Hof.',
+    text: 'Grünlandflächen am Rand eines Naturschutzgebietes prägen die Sommerhaltung.',
     alt: 'Ländlicher Weg mit Blick über Grünlandflächen',
   },
 ];
@@ -66,11 +66,12 @@ function App() {
         />
         <div className="hero-shade" />
         <div className="hero-content">
-          <p className="eyebrow">Landwirtschaftlicher Betrieb</p>
+          <p className="eyebrow">Landwirtschaftlicher Familienbetrieb</p>
           <h1 id="hero-title">Die Riedemanns</h1>
           <p>
-            Freilandeier und Fleisch von eigenen Charolais-Rindern. Ruhig,
-            naturnah und mit Respekt vor Tier, Landschaft und Handwerk.
+            Freilandeier direkt vom Hof und Fleisch von eigenen
+            Charolais-Rindern. Wir arbeiten bodenständig, mit ruhigem Umgang
+            mit den Tieren und kurzen Wegen für Menschen aus der Region.
           </p>
           <a className="button" href={orderMail}>
             Fleisch anfragen
@@ -81,12 +82,13 @@ function App() {
       <section id="angebot" className="section intro">
         <div>
           <p className="eyebrow">Vom Hof</p>
-          <h2>Ein einfaches Angebot, getragen von guter Haltung.</h2>
+          <h2>Freilandeier und Charolais-Rindfleisch aus eigener Haltung.</h2>
         </div>
         <p>
-          Diese Seite ist als edle Portfolioseite für den Betrieb angelegt. Sie
-          zeigt, wofür der Hof steht, und macht Anfragen zu Fleischbestellungen
-          unkompliziert möglich.
+          Unser Hof steht für ein überschaubares Angebot, das wir selbst
+          verantworten: Freilandeier aus eigener Hühnerhaltung und Rindfleisch
+          von unseren Charolais-Rindern. Was es gibt, kommt aus unserem Alltag
+          auf dem Hof und ist nach Verfügbarkeit erhältlich.
         </p>
       </section>
 
@@ -112,22 +114,30 @@ function App() {
       </section>
 
       <section id="haltung" className="section story">
-        <p className="eyebrow">Haltung</p>
-        <h2>Die Kälber bleiben bei ihren Mutterkühen.</h2>
+        <p className="eyebrow">Unser Hof</p>
+        <h2>Bodenständig arbeiten, ruhig mit den Tieren umgehen.</h2>
         <p>
-          Die Charolais-Rinder wachsen im Herdenverbund auf. Im Sommer stehen
-          sie auf Grünlandflächen am Rande eines Naturschutzgebietes, wo Weite,
-          frisches Futter und ein ruhiger Rhythmus den Alltag prägen.
+          Wir führen unseren Hof als Familienbetrieb mit einem klaren Blick auf
+          das Wesentliche: gute Haltung, verlässliche Arbeit und ein
+          respektvoller Umgang mit den Tieren. Unsere Charolais-Rinder leben im
+          Herdenverbund; die Kälber bleiben bei ihren Mutterkühen. Im Sommer
+          grasen die Tiere auf Grünlandflächen am Rand eines Naturschutzgebietes.
         </p>
       </section>
 
       <section id="anfrage" className="contact">
         <div>
-          <p className="eyebrow">Bestellung & Kontakt</p>
-          <h2>Fleisch vom Charolais-Rind kann per Mail angefragt werden.</h2>
+          <p className="eyebrow">Fleisch anfragen</p>
+          <h2>Charolais-Rindfleisch gibt es auf Anfrage und nach Verfügbarkeit.</h2>
+          <p>
+            Schreib uns gern eine Mail, wenn du Interesse an Fleisch vom
+            Charolais-Rind hast. Hilfreich sind Name, Telefonnummer, gewünschte
+            Menge und ob du über kommende Termine informiert werden möchtest. Da
+            wir nicht dauerhaft schlachten, ist die Verfügbarkeit begrenzt.
+          </p>
         </div>
         <a className="button button-dark" href={orderMail}>
-          Anfrage senden
+          Anfrage per Mail senden
         </a>
       </section>
     </main>
