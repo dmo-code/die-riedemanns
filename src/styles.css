@@ -158,6 +158,90 @@ h3 {
   color: #fffaf0;
 }
 
+.password-page {
+  align-items: center;
+  background:
+    linear-gradient(rgba(247, 244, 236, 0.72), rgba(247, 244, 236, 0.88)),
+    url("../assets/hoflandschaft.png") center / cover;
+  display: flex;
+  justify-content: center;
+  min-height: 100svh;
+  padding: clamp(14px, 5vw, 72px);
+}
+
+.password-panel {
+  background: rgba(251, 249, 243, 0.94);
+  border: 1px solid rgba(34, 53, 37, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(24, 38, 29, 0.1);
+  container-type: inline-size;
+  max-width: 520px;
+  padding: clamp(22px, 7cqi, 46px);
+  text-align: center;
+  width: min(100%, 520px);
+}
+
+.password-panel h1 {
+  color: #18261d;
+  font-size: clamp(1.85rem, 11cqi, 3.65rem);
+  margin-bottom: 18px;
+  white-space: nowrap;
+}
+
+.password-panel p:not(.eyebrow) {
+  color: #566557;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+
+.password-form {
+  display: grid;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: 430px;
+  text-align: left;
+}
+
+.password-form label {
+  color: #243126;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.password-row {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.password-row input {
+  background: #fffdf8;
+  border: 1px solid rgba(34, 53, 37, 0.24);
+  border-radius: 6px;
+  color: #243126;
+  flex: 1;
+  font: inherit;
+  min-height: 48px;
+  min-width: 0;
+  padding: 12px 14px;
+}
+
+.password-row input:focus {
+  border-color: #86583d;
+  outline: 3px solid rgba(134, 88, 61, 0.18);
+}
+
+.password-row button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.password-error {
+  color: #8a2f22;
+  font-weight: 700;
+  margin: 2px 0 0;
+}
+
 .section {
   padding: clamp(58px, 8vw, 108px) clamp(18px, 5vw, 72px);
 }
@@ -441,5 +525,9 @@ h3 {
   .contact {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .password-row {
+    grid-template-columns: 1fr;
   }
 }

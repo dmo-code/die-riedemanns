@@ -1,9 +1,12 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import chickenEggs from '../assets/charolais-hero.png';
 import heroPasture from '../assets/freilandhuehner-eier.png';
 import farmLandscape from '../assets/hoflandschaft.png';
 import './styles.css';
+
+const passwordHash = import.meta.env.VITE_PAGE_PASSWORD_HASH || '';
+const passwordStorageKey = 'die-riedemanns-page-unlocked';
 
 const offerings = [
   {
@@ -41,9 +44,80 @@ const impressions = [
   },
 ];
 
+async function getSha256Hash(value) {
+  const bytes = new TextEncoder().encode(value);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', bytes);
+
+  return Array.from(new Uint8Array(hashBuffer))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function PasswordGate({ onUnlock }) {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isChecking, setIsChecking] = useState(false);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setError('');
+    setIsChecking(true);
+
+    const enteredHash = await getSha256Hash(password);
+
+    if (enteredHash === passwordHash) {
+      sessionStorage.setItem(passwordStorageKey, 'true');
+      onUnlock();
+      return;
+    }
+
+    setError('Das Passwort stimmt nicht.');
+    setPassword('');
+    setIsChecking(false);
+  }
+
+  return (
+    <main className="password-page">
+      <section className="password-panel" aria-labelledby="password-title">
+        <p className="eyebrow">Geschützter Zugang</p>
+        <h1 id="password-title">Die Riedemanns</h1>
+        <p>
+          Diese Seite ist vorübergehend mit einem Passwort geschützt. Bitte gib
+          das Passwort ein, um fortzufahren.
+        </p>
+        <form className="password-form" onSubmit={handleSubmit}>
+          <label htmlFor="page-password">Passwort</label>
+          <div className="password-row">
+            <input
+              id="page-password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              autoComplete="current-password"
+              autoFocus
+              required
+            />
+            <button className="button" type="submit" disabled={isChecking}>
+              {isChecking ? 'Prüfen' : 'Öffnen'}
+            </button>
+          </div>
+          {error && <p className="password-error">{error}</p>}
+        </form>
+      </section>
+    </main>
+  );
+}
+
 function App() {
+  const [isUnlocked, setIsUnlocked] = useState(
+    !passwordHash || sessionStorage.getItem(passwordStorageKey) === 'true',
+  );
   const orderMail =
     'mailto:hallo@die-riedemanns.de?subject=Anfrage%20Fleischbestellung&body=Guten%20Tag%2C%0A%0Aich%20interessiere%20mich%20fuer%20Fleisch%20vom%20Charolais-Rind.%0A%0AName%3A%0ATelefon%3A%0AWunschtermin%3A%0A%0AVielen%20Dank.';
+
+  if (!isUnlocked) {
+    return <PasswordGate onUnlock={() => setIsUnlocked(true)} />;
+  }
 
   return (
     <main>

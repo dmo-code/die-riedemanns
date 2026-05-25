@@ -34,6 +34,23 @@ npm run dev
 Der Dev-Server laeuft standardmaessig unter `http://localhost:5173/`.
 Falls der Port belegt ist, waehlt Vite automatisch den naechsten freien Port.
 
+## Passwortschutz
+
+Die Seite kann ueber einen clientseitigen Passwortschutz gesperrt werden. Dafuer
+wird in `.env.local` der SHA-256-Hash des Passworts gesetzt:
+
+```bash
+VITE_PAGE_PASSWORD_HASH=...
+```
+
+Zum Aendern des Passworts einen neuen SHA-256-Hash erzeugen und in `.env.local`
+sowie in der Hosting-Umgebung als `VITE_PAGE_PASSWORD_HASH` hinterlegen. Ohne
+gesetzten Hash ist die Sperre deaktiviert.
+
+Hinweis: Bei einer statischen Webseite ist das eine einfache Zugangssperre im
+Browser. Fuer echten Schutz sollte zusaetzlich ein serverseitiger
+Passwortschutz beim Hoster eingerichtet werden.
+
 ## Statischer Build
 
 ```bash
