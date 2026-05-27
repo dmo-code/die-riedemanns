@@ -80,4 +80,4 @@ Aktuell genutzte Bilder:
 
 Nach `npm run build` kann der Inhalt des Ordners `dist/` auf einen statischen
 Host hochgeladen werden. Die Vite-Konfiguration nutzt relative Asset-Pfade,
-damit die Seite auch in Unterordnern funktioniert.
+damit die Seite auch in Unterordnern funktioniert. 1
